@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Soundbox.Models.Song>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="sideBar">
+        <h2 id="pageTitle">Songs:</h2>
+        <hr />
+        <div id="albumBox">
+            <i id="albumIcon" class="fa fa-music fa-5x"></i>
+        </div>
+        <hr />
+        <a id="createSongModal" class="btn btn-success" data-toggle="modal" data-target="#createModal">Add new song</a>
+    </div>
+
+<div class="pageContent">
+    <div class="songIndexPageContent">
+        <table class="table" id="songsTable">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Album)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReleaseYear)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                        <div>
+                            <span class="actionLink">
+                                <a onclick="DetailsSong(@item.Id)">View</a>
+                            </span>
+                            |
+                            <span class="actionLink">
+                                <a onclick="EditSong(@item.Id)">Edit</a>
+                            </span>
+
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Album)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReleaseYear)
+                    </td>
+                    <td>
+                        <button class="deleteButton" onclick="DeleteSong(@item.Id)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+
+        </table>
+        <div id="songActionModal"></div>
+    </div>
+
+</div>
+
+
+@await Html.PartialAsync("./_CreateSong", new Soundbox.Models.Song())
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+@section scripts
+{
+    <script src="~/js/songs-index.js" asp-append-version="true"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('#songsTable').DataTable();
+        });
+    </script>
+}

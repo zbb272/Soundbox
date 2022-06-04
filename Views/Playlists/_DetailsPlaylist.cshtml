@@ -1,0 +1,95 @@
+﻿
+@model Soundbox.Models.PlaylistSongsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!-- Modal -->
+<div class="modal fade" id="playlistDetailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Playlist Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div>
+                <h4>@Html.DisplayFor(model => model.Playlist.Name)</h4>
+                <hr />
+                <a asp-action="Add" asp-route-id="@Model.Playlist.Id" class="btn btn-primary">Add new song</a>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Album
+                            </th>
+                            <th>
+                                Release Year
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Playlist.PlaylistSongs)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Song.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Song.Album)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Song.ReleaseYear)
+                                </td>
+                                <td>
+                                    <a asp-controller="Songs" asp-action="Details" asp-route-id="@item.Song.Id">Details</a> |
+                                    <form asp-action="Add" id="AddSongForm">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <input asp-for="PlaylistId" type="hidden" value="@Model.Playlist.Id" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input asp-for="SongId" type="hidden" value="@item.Song.Id" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <button id="AddSongButton">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.Playlist.Id">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $("#AddSongButton").click(function(event) {
+            $("#AddSongForm").submit();
+        })
+    </script>
+}
+
+

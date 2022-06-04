@@ -1,0 +1,73 @@
+﻿@model Soundbox.Models.PlaylistSongsViewModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="sideBar">
+    <h2 id="pageTitle">Add Song to Playlist:</h2>
+    <h4>@Html.DisplayFor(model => model.Playlist.Name)</h4>
+    <hr />
+    <div id="albumBox">
+        <i id="albumIcon" class="fa fa-music fa-5x"></i>
+    </div>
+    <hr />
+</div>
+
+<div class="pageContent">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Album
+            </th>
+            <th>
+                Release Year
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Songs)
+        {
+            <tr class="itemRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseYear)
+                </td>
+                <td>
+                    <form asp-action="Add">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <input asp-for="PlaylistId" type="hidden" value="@Model.PlaylistId" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="SongId" type="hidden" value="@item.Id" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add Song" class="btn btn-success" />
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+
+@section Scripts {
+    <script>
+        $("#AddSongButton").click(function(event) {
+                $("#AddSongForm").submit();
+        })
+    </script>
+}

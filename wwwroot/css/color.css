@@ -1,0 +1,61 @@
+﻿/*
+    In order from dark to light:
+
+    Blackish
+    #373737
+    Dark Green/Grayish
+    #486342
+    Medium/Dark Green
+    #408E2F
+    Medium/Light Green
+    #21B900
+    Light Green
+    #27DE00
+
+
+*/
+body {
+    background-color: #373737;
+    color: white;
+}
+
+#sideBar {
+    border-right: 2px solid darkgray;
+}
+
+.table {
+    background-color: #373737;
+}
+
+th {
+    color: white;
+    background-color: #5a5a5a;
+}
+
+tr {
+    color: white;
+    font-family: sans-serif;
+    background-color: grey;
+    
+}
+
+.itemRow {
+    transition: .5s;
+}
+
+.itemRow:hover {
+        background-color: darkgrey;
+        
+        height: 75px;
+    }
+
+
+.actionLink {
+    color: #78e000;
+    font-size: 14px;
+}
+
+.actionLink:hover {
+    text-decoration: underline;
+    color: lightgreen;
+}

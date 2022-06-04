@@ -1,0 +1,176 @@
+﻿
+
+
+
+.footer {
+    margin-left: 5px;
+}
+.footer a {
+    color: #78e000;
+    font-size: 14px;
+}
+
+.sideBar {
+    float: left;
+    display: inline;
+    width: 215px;
+    top: 60px;
+    min-height: 87%;
+    position: absolute;
+}
+
+.pageContent {
+    float: right;
+    display: inline;
+    min-width: 850px;
+    width: 80%;
+}
+
+body {
+    background-color: #373737;
+    color: white;
+}
+
+#sideBar {
+    border-right: 2px solid darkgray;
+}
+
+.table {
+    background-color: #373737;
+}
+
+th {
+    color: white;
+    background-color: #5a5a5a;
+}
+
+tr {
+    
+    
+}
+
+.itemRow {
+    transition: .5s;
+    color: white;
+    font-family: sans-serif;
+    background-color: grey;
+}
+
+.itemRow:hover {
+    background-color: darkgrey;
+        
+    height: 75px;
+}
+
+
+.actionLink {
+    color: #78e000;
+    font-size: 14px;
+}
+
+    .actionLink a {
+        color: #78e000;
+        font-size: 14px;
+    }
+
+.actionLink:hover {
+    text-decoration: underline;
+    color: lightgreen;
+}
+
+.deleteButton {
+    float: right;
+    background-color: transparent;
+    border: none;
+}
+
+    .deleteButton:hover {
+        color: #78e000;
+    }
+
+.modal {
+    color: black;
+}
+
+#ArtistsGrid {
+    border: none;
+}
+
+#ArtistsGrid thead {
+    border: 1px solid darkgrey;
+}
+
+#ArtistsGrid tr {
+    transition: .5s;
+    color: white;
+    font-family: sans-serif;
+    background-color: grey;
+}
+#ArtistsGrid tr:hover {
+    background-color: darkgrey;
+}
+
+#ArtistsGrid .k-grouping-header{
+    background-color: grey;
+    color: white;
+    font-family: sans-serif;
+}
+
+#ArtistsGrid .k-pager-wrap.k-pager-lg, .k-pager-wrap.k-pager-md, .k-pager-wrap.k-pager-sm {
+    background-color: grey;
+    color: white;
+    font-family: sans-serif;
+}
+
+#ArtistsGrid .k-grid-header .k-link {
+    color: white;
+}
+
+#ArtistsGrid .k-link {
+    color: #78e000;
+}
+
+.dataTables_wrapper label {
+    color: white;
+}
+
+#songsTable_wrapper div {
+    color: white;
+}
+
+#songsTable_wrapper .paginate_button {
+    color: white;
+}
+
+#albumBox {
+    background-color: white;
+    min-height: 200px;
+    text-align: center;
+    background: linear-gradient(270deg, #007a5a, #00ffbc, #aeffea);
+    background-size: 600% 600%;
+    -webkit-animation: AlbumAnimation 30s ease infinite;
+    -moz-animation: AlbumAnimation 30s ease infinite;
+    animation: AlbumAnimation 30s ease infinite;
+}
+
+#albumIcon {
+    color: black;
+    display: inline-block;
+    margin-top: 50px;
+}
+
+@-webkit-keyframes AlbumAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AlbumAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AlbumAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}

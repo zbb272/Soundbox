@@ -1,0 +1,17 @@
+﻿body {
+}
+
+#sideBar {
+    float: left;
+    display: inline;
+    width: 16%;
+    top: 60px;
+    min-height: 87%;
+    position: absolute;
+}
+
+#mainContent {
+    float: right;
+    display: inline;
+    width: 80%;
+}

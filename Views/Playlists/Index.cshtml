@@ -1,0 +1,59 @@
+﻿@using System.Collections.Specialized
+@model IEnumerable<Soundbox.Models.Playlist>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a id="createPlaylistModal" class="btn btn-success" data-toggle="modal" data-target="#createModal">Create New Playlist</a>
+</p>
+
+
+@await Html.PartialAsync("./_CreatePlaylist", new Soundbox.Models.Playlist())
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="playlistRow@(item.Id)" class="itemRow">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                        <div>
+                            <span class="actionLink">
+                                <a asp-action="Details" asp-route-id="@item.Id">View</a>
+                            </span>
+                            |
+                            <span class="actionLink">
+                                <a onclick="EditPlaylist(@item.Id)">Edit</a>
+                            </span>
+
+                        </div>
+
+                    </td>
+                    <td>
+                        <button class="deleteButton" onclick="DeletePlaylist(@item.Id)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+              
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="playlistActionModal"></div>
+
+@section Scripts{
+    <script src="~/js/playlists-index.js" asp-append-version="true"></script>
+}
